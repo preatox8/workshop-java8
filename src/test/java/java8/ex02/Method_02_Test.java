@@ -19,6 +19,16 @@ public class Method_02_Test {
         // TODO créer une méthode String format()
         // TODO la méthode retourne une chaîne de la forme [<nb_personnes> persons]
         // TODO exemple de résultat : "[14 persons]", "[30 persons]"
+        
+        default String format() {
+        	String chaine_personne = "";
+        	for(Person person : findAll()) {
+        		int nbr_person = person.;
+        		chaine_personne = nbr_person + "person";
+        	}
+   
+        	return chaine_personne;
+        }
     }
     // end::IDao[]
 
