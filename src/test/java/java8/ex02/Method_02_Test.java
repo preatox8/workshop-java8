@@ -25,7 +25,7 @@ public class Method_02_Test {
         	
         	List<Person> persons = findAll();
         	int taille = persons.size();
-        	chainepersonne = "DaoA[" + taille +  " persons]";
+        	chainepersonne = "[" + taille +  " persons]";
         	
         	return chainepersonne;
         }
@@ -47,6 +47,14 @@ public class Method_02_Test {
         // TODO exemple de résultat : "DaoA[14 persons]", "DaoA[30 persons]"
         // TODO l'implémentation réutilise la méthode format() de l'interface
         
+        @Override
+        public String format() {
+        	String result = "";
+        	result = "DaoA" + IDao.super.format();
+        	System.out.println(result);
+        	return result;
+        }
+       
 
     }
     // end::DaoA[]
@@ -54,12 +62,12 @@ public class Method_02_Test {
     @Test
     public void test_daoA_format() throws Exception {
 
-        DaoA daoA = new DaoA();
+        DaoA daoa = new DaoA();
 
         // TODO invoquer la méthode format() pour que le test soit passant
         String result = null;
         
-        result = daoA.format();
+        result = daoa.format();
         
 
         "DaoA[20 persons]".equals(result);

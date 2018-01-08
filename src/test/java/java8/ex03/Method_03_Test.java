@@ -18,6 +18,12 @@ public class Method_03_Test {
 
         // TODO créer une méthode statique IDao getDefaultInstance()
         // TODO cette méthode retourne une instance de la classe DaoA
+        
+         static IDao getDefaultInstance() {
+        	Method_03_Test method = new Method_03_Test();
+        	IDao idao = new Method_03_Test.IDao();
+        	return idao;
+        
     }
     // end::IDao[]
 
