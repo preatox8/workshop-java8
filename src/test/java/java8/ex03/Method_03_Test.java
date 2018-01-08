@@ -3,6 +3,7 @@ package java8.ex03;
 import java.util.List;
 
 import org.junit.Test;
+import org.omg.Messaging.SyncScopeHelper;
 
 import java8.data.Data;
 import java8.data.Person;
@@ -21,8 +22,10 @@ public class Method_03_Test {
         
          static IDao getDefaultInstance() {
         	Method_03_Test method = new Method_03_Test();
-        	IDao idao = new Method_03_Test.IDao();
-        	return idao;
+        	DaoA daoa = method.new DaoA();
+        	return daoa;
+        	
+         }
         
     }
     // end::IDao[]
@@ -42,7 +45,8 @@ public class Method_03_Test {
     public void test_getDefaultInstance() throws Exception {
         // TODO invoquer la méthode getDefaultInstance() pour que le test soit passant
         IDao result = null;
-
+        result = IDao.getDefaultInstance();
+       System.out.println(result);
         assert result.findAll().size() == 20;
     }
 }
