@@ -5,6 +5,7 @@ import java8.data.Data;
 import java8.data.Person;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,12 +18,31 @@ public class Lambda_02_Test {
     interface PersonToAccountMapper {
         Account map(Person p);
     }
+    
+    interface PersonToNameMapper{
+    	String map(Person p);
+    }
     // end::PersonToAccountMapper[]
 
     // tag::map[]
     private List<Account> map(List<Person> personList, PersonToAccountMapper mapper) {
         // TODO implémenter la méthode pour transformer une liste de personnes en liste de comptes
-        return null;
+    	List<Account> compte = new ArrayList<Account>();
+    		for(Person p : personList) {
+    			compte.add(mapper.map(p));
+    		}
+    		
+        return compte;
+    }
+    
+    private List<String> map(List<Person> personList, PersonToNameMapper mapper) {
+        // TODO implémenter la méthode pour transformer une liste de personnes en liste de nom
+    	List<String> nom = new ArrayList<String>();
+    		for(Person p : personList) {
+    			nom.add(mapper.map(p));
+    		}
+    		
+        return nom;
     }
     // end::map[]
 
@@ -35,7 +55,16 @@ public class Lambda_02_Test {
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, null);
+        
+        
+        PersonToAccountMapper mapper =  p -> {
+				Account ac = new Account();
+				ac.setOwner(p);
+				ac.setBalance(100);
+				return ac;
+			};
+        
+        List<Account> result = map(personList, mapper);
 
         assert result.size() == personList.size();
         for (Account account : result) {
@@ -52,7 +81,15 @@ public class Lambda_02_Test {
         List<Person> personList = Data.buildPersonList(100);
 
         // TODO transformer la liste de personnes en liste de prénoms
-        List<String> result = null;
+        
+        PersonToNameMapper mapper = p ->  {
+        	String name = new String ();
+        	name = p.getFirstname();
+        	return name;
+        };
+        
+       
+        List<String> result = map(personList, mapper);
 
         assert result.size() == personList.size();
         for (String firstname : result) {
