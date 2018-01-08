@@ -21,13 +21,13 @@ public class Method_02_Test {
         // TODO exemple de résultat : "[14 persons]", "[30 persons]"
         
         default String format() {
-        	String chaine_personne = "";
-        	for(Person person : findAll()) {
-        		int nbr_person = person.;
-        		chaine_personne = nbr_person + "person";
-        	}
-   
-        	return chaine_personne;
+        	String chainepersonne = "";
+        	
+        	List<Person> persons = findAll();
+        	int taille = persons.size();
+        	chainepersonne = "DaoA[" + taille +  " persons]";
+        	
+        	return chainepersonne;
         }
     }
     // end::IDao[]
@@ -46,6 +46,7 @@ public class Method_02_Test {
         // TODO la méthode retourne une chaîne de la forme DaoA[<nb_personnes> persons]
         // TODO exemple de résultat : "DaoA[14 persons]", "DaoA[30 persons]"
         // TODO l'implémentation réutilise la méthode format() de l'interface
+        
 
     }
     // end::DaoA[]
@@ -57,6 +58,9 @@ public class Method_02_Test {
 
         // TODO invoquer la méthode format() pour que le test soit passant
         String result = null;
+        
+        result = daoA.format();
+        
 
         "DaoA[20 persons]".equals(result);
     }
