@@ -62,12 +62,16 @@ public class Lambda_04_Test {
 
         private <E> FuncCollection<E> map(GenericMapper<T, E> mapper) {
             FuncCollection<E> result = new FuncCollection<>();
-            // TODO
+            	for() {
+            		result.add(mapper.map(t, e));
+            	}
             return result;
         }
 
         private void forEach(Processor<T> processor) {
-
+        	for(T t : list) {
+        		processor.process(t);
+        	}
         	
         }
         // end::methods[]
